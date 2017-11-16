@@ -12,7 +12,7 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   </head>
-  <body>
+<body>
 
 <div class="constainer">
 
@@ -25,15 +25,16 @@
       <div class="col-md-8 books">
         <div class="panel panel-default">
           <!-- Default panel contents -->
-          <div class="panel-heading">      <h2>Books
-                  <div class="btn btn-sm btn-success glyphicon glyphicon-plus">
-                  </div>
-                </h2>
+          <div class="panel-heading">
+            <h2>Books
+              <button class="btn btn-sm btn-success glyphicon glyphicon-plus" data-toggle="modal" data-target="#addBookModal">
+              </button>
+            </h2>
           </div>
 
           <!-- Table -->
           <table id="bookTable" class="table table-striped">
-
+            <tr></tr>
           </table>
         </div>
       </div>
@@ -44,34 +45,77 @@
           <!-- Default panel contents -->
           <div class="panel-heading">
             <h2>Borrowers
-            <div class="btn btn-sm btn-success glyphicon glyphicon-plus"></div>
-          </h2>
+              <button class="btn btn-sm btn-success glyphicon glyphicon-plus" data-toggle="modal" data-target="#addBorrowerModal">
+              </button>
+            </h2>
 
           <!-- Table -->
-            <table class="table table-striped">
-              <tr>
-                <td>Title of Book</td>
-              </tr>
+            <table id="borrowerTable" class="table table-striped">
+              <tr></tr>
             </table>
           </div>
         </div>
       </div>
-
-    </div>
-
-    <div class="btn btn-primary glyphicon glyphicon-plus">
-      testing
     </div>
 </div>
 
-<section id="templates">
+<!-- ======================================================== -->
+<!-- =========================MODALS========================= -->
+<!-- ======================================================== -->
+
+<div class="modal fade" id="addBookModal" tabindex="-1" role="dialog" aria-labelledby="addBookModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="Add a Book!" id="addBookModalLabel">Add a Book!</h4>
+      </div>
+      <div class="modal-body">
+
+        <form id="addBookForm">
+
+          <div class="form-group input-group">
+            <span class="input-group-addon"><div class="glyphicon glyphicon-book"></div></span>
+            <input class="form-control form-group addBookTitle" type="text" name="bookTitle" placeholder="Book Title">
+          </div>
+
+          <textarea name="bookDescription" placeholder="Description" class="form-control form-group addBookDescription">
+          </textarea>
+
+          <div class="form-group input-group">
+            <span class="input-group-addon"><div class="glyphicon glyphicon-picture"></div></span>
+            <input class="form-control form-group addBookImageURL" type="text" name="bookImage" placeholder="Book Image">
+          </div>
+
+        </form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button id="createBookButton" type="button" class="btn btn-primary">Create Book</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ==========================================================-->
+<!-- ===========================TEMPLATES===================== -->
+<!-- ==========================================================-->
+
+<section id="templates" class="hidden">
 
   <table>
     <tr class="book" data-id="some-id">
-      <td><img class="img-responsive bookImage"  src="some url" alt="Some Title">
+      <td><img class="img-responsive bookImage" src="" alt="">
         <td class="bookDescription"></td>
         <td class="bookTitle">Broken Sky</td>
       </td>
+    </tr>
+
+  <tr class="borrower" data-id="some-id">
+      <td class="borrowerFirstName">First Name</td>
+      <td class="borrowerLastName">Last Name</td>
   </tr>
   </table>
 </section>
