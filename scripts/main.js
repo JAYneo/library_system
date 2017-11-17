@@ -11,7 +11,7 @@ var libraryID = 131
 var baseURL = `https://floating-woodland-64068.herokuapp.com/libraries/${libraryID}`
 
 function addBookToPage(bookData) {
-  var book = bookTemplate.clone()
+  var book = bookTemplate.clone(true, true)
   book.attr('data-id', bookData.id)
   book.find('.bookTitle').text(bookData.title)
   book.find('.bookImage').attr('src', bookData.image_url)
@@ -43,9 +43,21 @@ var getBorrowerRequest = $.ajax({
   url: `${baseURL}/borrowers`,
 })
 
-getBorrowerRequest.done(( dataFromServer) => {
+getBorrowerRequest.done((dataFromServer) => {
   dataFromServer.forEach((borrowerData) => {
     addBorrowerToPage(borrowerData)
+  })
+})
+
+bookTable.on('click', '.deleteBook', function(event) {
+  var item = $(event.currentTarget).parents('.book')
+  var itemID = item.attr('data-id')
+  var deleteBook = $.ajax({
+    type: 'DELETE',
+    url: `${baseURL}/books/${itemID}`,
+  })
+  deleteBook.done(function() {
+    item.remove()
   })
 })
 
@@ -69,4 +81,18 @@ $('#createBookButton').on('click', () => {
     $('#addBookModal').modal('hide')
     $('#addBookForm')[0].reset()
   })
+
 })
+
+// bookTable.on('click', '.deleteBook', (event) => {
+//   console.log("inside deleteBook click")
+//   var item = $(event.currentTarget).parents('.book')
+//   var itemID = item.attr('data-id')
+//   var deleteBook = $.ajax({
+//     type: 'DELETE',
+//     url: `${baseURL}/books/${itemID}`,
+//   })
+// deleteBook.done( () => {
+//   item.remove()
+//  })
+// })
