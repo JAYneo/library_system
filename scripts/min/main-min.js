@@ -112,7 +112,7 @@ $('.borrowerSelect').on('change', (event) => {
   console.log("The id is " + borrowerID)
   requests.updateBook({borrower_id: borrowerID, id: bookID}).then(() => {
     incrementBorrowerCount(borrowerID)
-    findBookModel(Number(bookID)).borrower_id = borrowerID
+    findBookModel(Number(bookID)).borrower_id = Number(borrowerID)
     decrementBorrowerCount(oldBorrowerID)
   })
   //  ^^^^ Jer needs to know .then+++ var oldBorrowerID ^^^^
