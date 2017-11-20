@@ -89,6 +89,11 @@
 
         </form>
 
+        <div class="imagePreview hidden">
+          <p>Image imagePreview</p>
+          <img src="" alt="Oopsy Daisy No Image Load">
+        </div>
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -98,9 +103,31 @@
   </div>
 </div>
 
+<!-- Jer needs to know  -->
+<div class="modal fade" id="viewBorrowerModal" tabindex="-1" role="dialog" aria-labelledby="viewBorrowerModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="viewBorrowerModal" id="viewBorrowerModalLabel">Borrower Name</h4>
+      </div>
+      <div class="modal-body">
+
+        <ul class="borrowedBooks">
+
+        </ul>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <!-- ==========================================================-->
-<!-- ===========================TEMPLATES===================== -->
+<!-- ===========================TEMPLATES======================-->
 <!-- ==========================================================-->
 
 <section id="templates" class="hidden">
@@ -112,12 +139,9 @@
         <td class="bookTitle">Broken Sky</td>
         <td>
           <div class="form-group">
-            <select class="form-control" id="sel1">
-            <option>Available</option>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
+            <select class="form-control borrowerSelect">
+            <option value="">Available</option>
+            <!-- ^^^^ Jer needs to know (value)^^^^ -->
           </div>
         </td>
         <td><button class="btn btn-danger glyphicon glyphicon-remove deleteBook"></button></td>
@@ -128,6 +152,11 @@
       <td><span class="badge">0</span></td>
   </tr>
   </table>
+
+  <select name="" id="">
+    <option class="borrowerOption" value="some-id">Name</option>
+  </select>
+
 </section>
 
     <!-- Latest compiled and minified JavaScript -->
