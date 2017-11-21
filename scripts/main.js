@@ -150,6 +150,25 @@ $('.borrower').on('click', (event) => {
       viewBorrowerModal.find('.borrowedBooks').append('<li>' + book.title + '</li>')
     }
   })
+  var noBooksMsg = viewBorrowerModal.find('.noBooksMsg')
+  $('.borrowedBooks li').length === 0 ?
+    noBooksMsg.removeClass('hidden') : noBooksMsg.addClass('hidden')
+
   viewBorrowerModal.modal('show')
 })
+// ^^^^ Jer needs to know ^^^^
+
+$('.searchBox input').on('input', (event) => {
+  var searchString = $(event.target).val().toLowerCase()
+
+  dataModel.books.forEach((book) => {
+    var bookRow = $(`.book[data-id="${book.id}"]`)
+    if(book.title.toLowerCase().includes(searchString) || book.description.toLowerCase().includes(searchString)) {
+      bookRow.removeClass('hidden')
+    } else {
+      bookRow.addClass('hidden')
+    }
+  })
+})
+
 // ^^^^ Jer needs to know ^^^^

@@ -6,3 +6,6 @@
 
 .page-header {
   border-bottom: none; }
+
+#borrowerTable .borrower {
+  cursor: pointer; }
